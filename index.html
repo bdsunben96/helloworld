@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hello World Project</title>
     <style>
         body {
             margin: 0;
+            font-family: 'Arial', sans-serif;
         }
         
         .root {
@@ -14,13 +15,22 @@
             flex-direction: column;
             height: 100vh;
             width: 100%;
+            background-color: #f8f9fa;
         }
         
         .header {
-            background-color: #f0f0f0;
+            background-color: #4285f4;
+            color: white;
             padding: 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
         }
         
         .menu {
@@ -28,9 +38,19 @@
             gap: 20px;
         }
         
+        .menu div {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .menu div:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
         .main {
             flex: 1;
-            background-color: #e0e0e0;
             padding: 0;
             overflow-y: auto;
             display: flex;
@@ -38,42 +58,102 @@
         
         .leftbar {
             width: 200px;
-            background-color: #c0c0c0;
+            background-color: #f1f3f4;
             padding: 20px;
+            box-shadow: inset -1px 0 0 rgba(0,0,0,0.1);
         }
         
         .content {
             flex: 1;
-            padding: 20px;
+            padding: 30px;
+            line-height: 1.6;
         }
         
         .rightbar {
             width: 200px;
-            background-color: #c0c0c0;
+            background-color: #f1f3f4;
             padding: 20px;
+            box-shadow: inset 1px 0 0 rgba(0,0,0,0.1);
         }
         
         .footer {
-            background-color: #d0d0d0;
+            background-color: #34a853;
+            color: white;
             padding: 20px;
+            text-align: center;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #4285f4;
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
     <div class="root">
         <div class="header">
+            <div class="logo">Hello World</div>
             <div class="menu">
                 <div>Home</div>
                 <div>About</div>
+                <div>Services</div>
                 <div>Contact</div>
             </div>
         </div>
         <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
+            <div class="leftbar">
+                <div class="card">
+                    <h2>Navigation</h2>
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Projects</li>
+                        <li>Team</li>
+                        <li>Settings</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="card">
+                    <h2>Welcome to Hello World</h2>
+                    <p>This is a sample project demonstrating a responsive web layout with modern design elements.</p>
+                    <p>The layout includes a header, footer, main content area, and sidebars for optimal content organization.</p>
+                </div>
+                <div class="card">
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Responsive design</li>
+                        <li>Modern UI components</li>
+                        <li>Flexible layout structure</li>
+                        <li>Easy to customize</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rightbar">
+                <div class="card">
+                    <h2>Updates</h2>
+                    <p>Latest news and updates will appear here.</p>
+                </div>
+                <div class="card">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li>Documentation</li>
+                        <li>Resources</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="footer">Footer content goes here</div>
+        <div class="footer">
+            <p>© 2023 Hello World Project. All rights reserved.</p>
+        </div>
     </div>
 </body>
 </html>
