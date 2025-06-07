@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub PR管理工具</title>
     <style>
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
         }
         
         .root {
@@ -17,10 +18,11 @@
         }
         
         .header {
-            background-color: #f0f0f0;
+            background-color: #24292e;
             padding: 20px;
             display: flex;
             justify-content: flex-end;
+            color: white;
         }
         
         .menu {
@@ -30,7 +32,7 @@
         
         .main {
             flex: 1;
-            background-color: #e0e0e0;
+            background-color: #f6f8fa;
             padding: 0;
             overflow-y: auto;
             display: flex;
@@ -38,8 +40,9 @@
         
         .leftbar {
             width: 200px;
-            background-color: #c0c0c0;
+            background-color: #f6f8fa;
             padding: 20px;
+            border-right: 1px solid #e1e4e8;
         }
         
         .content {
@@ -49,13 +52,73 @@
         
         .rightbar {
             width: 200px;
-            background-color: #c0c0c0;
+            background-color: #f6f8fa;
             padding: 20px;
+            border-left: 1px solid #e1e4e8;
         }
         
         .footer {
-            background-color: #d0d0d0;
+            background-color: #f6f8fa;
             padding: 20px;
+            border-top: 1px solid #e1e4e8;
+            text-align: center;
+            font-size: 0.8em;
+            color: #586069;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e1e4e8;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2ea44f;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #2c974b;
+        }
+
+        button.danger {
+            background-color: #d73a49;
+        }
+
+        button.danger:hover {
+            background-color: #cb2431;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
         }
     </style>
 </head>
@@ -63,17 +126,60 @@
     <div class="root">
         <div class="header">
             <div class="menu">
-                <div>Home</div>
-                <div>About</div>
-                <div>Contact</div>
+                <div>GitHub PR管理工具</div>
             </div>
         </div>
         <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
+            <div class="leftbar">
+                <h3>操作指南</h3>
+                <p>1. 填写仓库信息</p>
+                <p>2. 获取PR列表</p>
+                <p>3. 清空所有PR</p>
+            </div>
+            <div class="content">
+                <div class="card">
+                    <h2>仓库信息</h2>
+                    <form id="github-form">
+                        <div class="form-group">
+                            <label for="owner">仓库所有者</label>
+                            <input type="text" id="owner" placeholder="例如: octocat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="repo">仓库名称</label>
+                            <input type="text" id="repo" placeholder="例如: hello-world" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="token">GitHub 个人访问令牌</label>
+                            <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxx" required>
+                            <small>需要具有repo权限的令牌</small>
+                        </div>
+                        <button type="submit">获取PR列表</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>PR列表</h2>
+                    <div id="pr-list">
+                        <p>请先获取PR列表</p>
+                    </div>
+                    <button id="clear-prs" class="danger">清空所有PR</button>
+                </div>
+
+                <div class="card">
+                    <h2>操作结果</h2>
+                    <div id="results">
+                        <p>尚未执行操作</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rightbar">
+                <h3>注意事项</h3>
+                <p>清空PR操作不可撤销，请谨慎操作！</p>
+                <p>个人访问令牌不会被保存。</p>
+            </div>
         </div>
-        <div class="footer">Footer content goes here</div>
+        <div class="footer">GitHub PR管理工具 &copy; 2023</div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
