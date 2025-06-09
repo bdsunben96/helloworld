@@ -3,77 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        
-        .root {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-        }
-        
-        .header {
-            background-color: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .main {
-            flex: 1;
-            background-color: #e0e0e0;
-            padding: 0;
-            overflow-y: auto;
-            display: flex;
-        }
-        
-        .leftbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
-        }
-    </style>
+    <meta name="description" content="A simple website with semantic HTML structure">
+    <title>My Website</title>
+    <!-- Preload CSS for performance optimization -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Defer JavaScript loading for better performance -->
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-    <div class="root">
-        <div class="header">
-            <div class="menu">
-                <div>Home</div>
-                <div>About</div>
-                <div>Contact</div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+    <div class="root" role="document">
+        <header role="banner">
+            <nav role="navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#" aria-current="page">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main role="main">
+            <aside class="leftbar" role="complementary" aria-label="Left Sidebar">
+                <h2>Sidebar</h2>
+                <p>Left sidebar content goes here</p>
+            </aside>
+            <section class="content">
+                <h1>Welcome to Our Website</h1>
+                <p>Main content area goes here</p>
+                <article>
+                    <h2>Article Title</h2>
+                    <p>This is an example article with semantic HTML structure.</p>
+                </article>
+            </section>
+            <aside class="rightbar" role="complementary" aria-label="Right Sidebar">
+                <h2>Additional Info</h2>
+                <p>Right sidebar content goes here</p>
+            </aside>
+        </main>
+        <footer role="contentinfo">
+            <p>Footer content goes here</p>
+            <p>&copy; 2025 My Website. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
