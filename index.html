@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hello World - 响应式布局演示</title>
     <style>
+        :root {
+            /* 颜色变量 */
+            --color-bg-body: #ffffff;
+            --color-bg-header: #f0f0f0;
+            --color-bg-main: #e0e0e0;
+            --color-bg-sidebar: #c0c0c0;
+            --color-bg-footer: #d0d0d0;
+            
+            /* 尺寸变量 */
+            --spacing-standard: 20px;
+            --spacing-small: 10px;
+            --sidebar-width: 200px;
+        }
+        
         body {
             margin: 0;
         }
@@ -17,63 +31,109 @@
         }
         
         .header {
-            background-color: #f0f0f0;
-            padding: 20px;
+            background-color: var(--color-bg-header);
+            padding: var(--spacing-standard);
             display: flex;
             justify-content: flex-end;
         }
         
         .menu {
             display: flex;
-            gap: 20px;
+            gap: var(--spacing-standard);
+        }
+        
+        /* 为导航菜单添加交互状态样式 */
+        .menu div {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu div:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu div:active {
+            background-color: rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
+        }
+        
+        .menu div.active {
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.15);
         }
         
         .main {
             flex: 1;
-            background-color: #e0e0e0;
+            background-color: var(--color-bg-main);
             padding: 0;
             overflow-y: auto;
             display: flex;
         }
         
         .leftbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+            width: var(--sidebar-width);
+            background-color: var(--color-bg-sidebar);
+            padding: var(--spacing-standard);
         }
         
         .content {
             flex: 1;
-            padding: 20px;
+            padding: var(--spacing-standard);
         }
         
         .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+            width: var(--sidebar-width);
+            background-color: var(--color-bg-sidebar);
+            padding: var(--spacing-standard);
         }
         
         .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
+            background-color: var(--color-bg-footer);
+            padding: var(--spacing-standard);
+        }
+        
+        /* 添加响应式设计的媒体查询 */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+            
+            .leftbar, .rightbar {
+                width: 100%;
+                padding: var(--spacing-small);
+            }
+            
+            .content {
+                padding: var(--spacing-small);
+            }
+            
+            .header {
+                padding: var(--spacing-small);
+            }
+            
+            .footer {
+                padding: var(--spacing-small);
+            }
         }
     </style>
 </head>
 <body>
     <div class="root">
-        <div class="header">
-            <div class="menu">
+        <header class="header">
+            <nav class="menu">
                 <div>Home</div>
                 <div>About</div>
                 <div>Contact</div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+            </nav>
+        </header>
+        <main class="main">
+            <aside class="leftbar">Left sidebar content goes here</aside>
+            <section class="content">Main content area goes here</section>
+            <aside class="rightbar">Right sidebar content goes here</aside>
+        </main>
+        <footer class="footer">Footer content goes here</footer>
     </div>
 </body>
 </html>
