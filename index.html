@@ -57,23 +57,48 @@
             background-color: #d0d0d0;
             padding: 20px;
         }
+        
+        /* 添加响应式设计支持 */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+            
+            .leftbar, .rightbar {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            .header {
+                justify-content: center;
+            }
+        }
+        
+        /* 针对更小屏幕的设备 */
+        @media (max-width: 480px) {
+            .menu {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="root">
-        <div class="header">
-            <div class="menu">
+        <header class="header">
+            <nav class="menu">
                 <div>Home</div>
                 <div>About</div>
                 <div>Contact</div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+            </nav>
+        </header>
+        <main class="main">
+            <aside class="leftbar">Left sidebar content goes here</aside>
+            <section class="content">Main content area goes here</section>
+            <aside class="rightbar">Right sidebar content goes here</aside>
+        </main>
+        <footer class="footer">Footer content goes here</footer>
     </div>
 </body>
 </html>
