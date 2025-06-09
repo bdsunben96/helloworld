@@ -3,77 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        
-        .root {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-        }
-        
-        .header {
-            background-color: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .main {
-            flex: 1;
-            background-color: #e0e0e0;
-            padding: 0;
-            overflow-y: auto;
-            display: flex;
-        }
-        
-        .leftbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
-        }
-    </style>
+    <title>Hello World</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="root">
-        <div class="header">
-            <div class="menu">
-                <div>Home</div>
-                <div>About</div>
-                <div>Contact</div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+        <header class="header">
+            <nav class="menu">
+                <div class="menu-item active" data-content="home-content">Home</div>
+                <div class="menu-item" data-content="about-content">About</div>
+                <div class="menu-item" data-content="contact-content">Contact</div>
+            </nav>
+        </header>
+        <main class="main">
+            <aside class="leftbar">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                </ul>
+                <button id="leftSidebarToggle" class="sidebar-toggle">隐藏左侧栏</button>
+            </aside>
+            <section class="content">
+                <div id="home-content" class="content-section fade-in">
+                    <h1>Welcome to Our Website</h1>
+                    <p>This is the main content area. We've improved this website with:</p>
+                    <ul>
+                        <li>Semantic HTML5 tags</li>
+                        <li>External CSS with variables</li>
+                        <li>JavaScript interactions</li>
+                        <li>Responsive design</li>
+                    </ul>
+                </div>
+                <div id="about-content" class="content-section" style="display: none;">
+                    <h1>About Us</h1>
+                    <p>This is the about section of our website.</p>
+                    <p>We are a company dedicated to creating amazing web experiences.</p>
+                </div>
+                <div id="contact-content" class="content-section" style="display: none;">
+                    <h1>Contact Us</h1>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </section>
+            <aside class="rightbar">
+                <h3>Additional Info</h3>
+                <p>This is the right sidebar content.</p>
+                <button id="rightSidebarToggle" class="sidebar-toggle">隐藏右侧栏</button>
+            </aside>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2025 Hello World Website. All rights reserved.</p>
+        </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
