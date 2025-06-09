@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modern Responsive Layout - Interactive Demo</title>
     <style>
+        :root {
+            --color-bg-primary: #f0f0f0;
+            --color-bg-secondary: #e0e0e0;
+            --color-bg-tertiary: #c0c0c0;
+            --color-bg-footer: #d0d0d0;
+            --spacing-standard: 20px;
+            --transition-speed: 0.3s;
+            --color-accent: #4a90e2;
+            --color-text: #333;
+            --color-text-light: #666;
+        }
+        
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
         }
         
         .root {
@@ -16,64 +29,213 @@
             width: 100%;
         }
         
-        .header {
-            background-color: #f0f0f0;
-            padding: 20px;
+        /* Header styles */
+        header {
+            background-color: var(--color-bg-primary);
+            padding: var(--spacing-standard);
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .menu {
-            display: flex;
-            gap: 20px;
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
         }
         
-        .main {
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text);
+            margin: 2px 0;
+            transition: var(--transition-speed);
+        }
+        
+        /* Navigation styles */
+        nav {
+            display: flex;
+            gap: var(--spacing-standard);
+        }
+        
+        nav div {
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        
+        nav div:hover {
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 4px;
+        }
+        
+        nav div.active {
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 4px;
+        }
+        
+        /* Main content area styles */
+        main {
             flex: 1;
-            background-color: #e0e0e0;
+            background-color: var(--color-bg-secondary);
             padding: 0;
             overflow-y: auto;
             display: flex;
+            transition: transform var(--transition-speed);
         }
         
-        .leftbar {
+        /* Sidebar styles */
+        aside {
             width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+            background-color: var(--color-bg-tertiary);
+            padding: var(--spacing-standard);
+            transition: width var(--transition-speed), padding var(--transition-speed);
         }
         
-        .content {
+        aside.collapsed {
+            width: 50px;
+            padding: var(--spacing-standard) 10px;
+            overflow: hidden;
+        }
+        
+        .sidebar-toggle {
+            cursor: pointer;
+            text-align: right;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+        }
+        
+        section.content {
             flex: 1;
-            padding: 20px;
+            padding: var(--spacing-standard);
+            transition: opacity var(--transition-speed);
         }
         
-        .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+        /* Footer styles */
+        footer {
+            background-color: var(--color-bg-footer);
+            padding: var(--spacing-standard);
         }
         
-        .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: var(--color-bg-primary);
+                padding: var(--spacing-standard);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 100;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            main {
+                flex-direction: column;
+            }
+            
+            aside {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            aside.collapsed {
+                width: 100%;
+                padding: 10px;
+                max-height: 40px;
+                overflow: hidden;
+            }
         }
     </style>
 </head>
 <body>
     <div class="root">
-        <div class="header">
-            <div class="menu">
-                <div>Home</div>
+        <header>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <div class="active">Home</div>
                 <div>About</div>
                 <div>Contact</div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+            </nav>
+        </header>
+        <main>
+            <aside class="leftbar">
+                <div class="sidebar-toggle">≪</div>
+                Left sidebar content goes here
+            </aside>
+            <section class="content">Main content area goes here</section>
+            <aside class="rightbar">
+                <div class="sidebar-toggle">≫</div>
+                Right sidebar content goes here
+            </aside>
+        </main>
+        <footer>Footer content goes here</footer>
     </div>
+    
+    <script>
+        // 为导航菜单项添加点击事件
+        document.querySelectorAll('nav div').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有活动状态
+                document.querySelectorAll('nav div').forEach(el => {
+                    el.classList.remove('active');
+                });
+                // 添加当前项的活动状态
+                this.classList.add('active');
+                
+                // 内容区域简单动画效果
+                const content = document.querySelector('.content');
+                content.style.opacity = '0';
+                setTimeout(() => {
+                    content.textContent = this.textContent + ' content area goes here';
+                    content.style.opacity = '1';
+                }, 300);
+            });
+        });
+        
+        // 响应式菜单切换按钮（汉堡菜单）
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        });
+        
+        // 侧边栏的折叠/展开功能
+        document.querySelectorAll('.sidebar-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const sidebar = this.closest('aside');
+                sidebar.classList.toggle('collapsed');
+                
+                // 更新折叠/展开图标
+                if (sidebar.classList.contains('collapsed')) {
+                    if (sidebar.classList.contains('leftbar')) {
+                        this.textContent = '≫';
+                    } else {
+                        this.textContent = '≪';
+                    }
+                } else {
+                    if (sidebar.classList.contains('leftbar')) {
+                        this.textContent = '≪';
+                    } else {
+                        this.textContent = '≫';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
