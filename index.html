@@ -3,77 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        
-        .root {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-        }
-        
-        .header {
-            background-color: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .main {
-            flex: 1;
-            background-color: #e0e0e0;
-            padding: 0;
-            overflow-y: auto;
-            display: flex;
-        }
-        
-        .leftbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
-        }
-        
-        .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
-        }
-    </style>
+    <meta name="description" content="A simple responsive webpage with semantic HTML">
+    <title>Improved Website</title>
+    <!-- 预加载CSS文件 -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/animations.css" as="style">
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <!-- 延迟加载JavaScript -->
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <div class="root">
-        <div class="header">
-            <div class="menu">
-                <div>Home</div>
-                <div>About</div>
-                <div>Contact</div>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <aside class="sidebar-left" aria-label="Left sidebar">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="#section1">Section 1</a></li>
+                    <li><a href="#section2">Section 2</a></li>
+                    <li><a href="#section3">Section 3</a></li>
+                </ul>
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li><a href="#">Post Title 1</a></li>
+                    <li><a href="#">Post Title 2</a></li>
+                    <li><a href="#">Post Title 3</a></li>
+                </ul>
+            </aside>
+            <section class="content">
+                <h1 id="home">Welcome to Our Website</h1>
+                <p>This is a modern, responsive website template built with semantic HTML5 and CSS3. It features a clean design, responsive layout, and smooth animations.</p>
+                
+                <h2 id="about">About Us</h2>
+                <p>We are a team of passionate developers and designers dedicated to creating beautiful and functional websites. Our goal is to help businesses and individuals establish a strong online presence.</p>
+                
+                <h2 id="services">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Web Design</h3>
+                        <p>Custom website design tailored to your brand and business needs.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Development</h3>
+                        <p>Front-end and back-end development using the latest technologies.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>SEO</h3>
+                        <p>Search engine optimization to improve your website's visibility.</p>
+                    </div>
+                </div>
+                
+                <h2 id="contact">Contact Us</h2>
+                <p>Get in touch with us to discuss your project or ask any questions.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+            <aside class="sidebar-right" aria-label="Right sidebar">
+                <h2>Latest Updates</h2>
+                <div class="update-card">
+                    <h3>New Feature</h3>
+                    <p>We've just launched our new responsive design!</p>
+                    <small>Posted on June 9, 2025</small>
+                </div>
+                <div class="update-card">
+                    <h3>Upcoming Event</h3>
+                    <p>Join our webinar on modern web development.</p>
+                    <small>Posted on June 5, 2025</small>
+                </div>
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
+            </aside>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p>A modern responsive website template for various purposes.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +1 (123) 456-7890</p>
+                </div>
             </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+            <div class="copyright">
+                <p>&copy; 2025 Your Company. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
