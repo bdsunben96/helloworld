@@ -3,77 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>电影网站</title>
     <style>
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #ffffff;
         }
         
         .root {
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            width: 100%;
+            min-height: 100vh;
         }
         
         .header {
-            background-color: #f0f0f0;
-            padding: 20px;
+            background-color: #000000;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            color: #e50914;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            flex: 0 1 400px;
+            margin: 0 2rem;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: none;
+            background-color: #333;
+            color: #fff;
         }
         
         .menu {
             display: flex;
-            gap: 20px;
+            gap: 1.5rem;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
         }
         
         .main {
             flex: 1;
-            background-color: #e0e0e0;
-            padding: 0;
-            overflow-y: auto;
-            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
         
-        .leftbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
         
-        .content {
-            flex: 1;
-            padding: 20px;
+        .movie-card {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
         }
         
-        .rightbar {
-            width: 200px;
-            background-color: #c0c0c0;
-            padding: 20px;
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .movie-poster {
+            width: 100%;
+            aspect-ratio: 2/3;
+            background-color: #666;
+        }
+        
+        .movie-info {
+            padding: 1rem;
+        }
+        
+        .movie-title {
+            margin: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .movie-rating {
+            color: #ffd700;
+            margin-top: 0.5rem;
         }
         
         .footer {
-            background-color: #d0d0d0;
-            padding: 20px;
+            background-color: #000000;
+            color: #666;
+            padding: 2rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="root">
-        <div class="header">
-            <div class="menu">
-                <div>Home</div>
-                <div>About</div>
-                <div>Contact</div>
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">MovieHub</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索电影...">
+                </div>
+                <div class="menu">
+                    <a href="#">首页</a>
+                    <a href="#">分类</a>
+                    <a href="#">排行榜</a>
+                    <a href="#">我的收藏</a>
+                </div>
+            </nav>
+        </header>
+        
+        <main class="main">
+            <div class="movie-grid">
+                <!-- 示例电影卡片 -->
+                <div class="movie-card">
+                    <div class="movie-poster"></div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">电影标题</h3>
+                        <div class="movie-rating">★★★★☆ 8.5</div>
+                    </div>
+                </div>
+                <!-- 更多电影卡片 -->
             </div>
-        </div>
-        <div class="main">
-            <div class="leftbar">Left sidebar content goes here</div>
-            <div class="content">Main content area goes here</div>
-            <div class="rightbar">Right sidebar content goes here</div>
-        </div>
-        <div class="footer">Footer content goes here</div>
+        </main>
+        
+        <footer class="footer">
+            <p>© 2024 MovieHub. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
